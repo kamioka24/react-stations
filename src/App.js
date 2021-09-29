@@ -14,6 +14,8 @@ export const App = () => {
       <header>React_Station2</header>
       <p>犬の画像です</p>
       <img src={dogUrl} />
+
+      <button onClick ={() => setDogUrl("https://images.dog.ceo/breeds/hound-english/n02089973_1132.jpg")} />
     </div>
   )
 }
