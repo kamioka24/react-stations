@@ -1,6 +1,4 @@
-// DO NOT DELETE
-
-import React, { useState, Component } from "react";
+import React, { useState } from "react";
 import './App.css'
 
 /**
@@ -11,14 +9,14 @@ import './App.css'
 export const App = () => {
   const [dogUrl, setDogUrl] = useState("https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1936.jpg");
 
-  const updataImage = () => {
+  const updateImage = () => {
     fetch("https://dog.ceo/api/breeds/image/random")
     .then(res => res.json())
     .then((data) => {
       const status = data.status;
       if (status === "success") {
-        const updataDogUrl = data.message;
-        setDogUrl(updataDogUrl)
+        const updateDogUrl = data.message;
+        setDogUrl(updateDogUrl)
       }
     },
       (error) => {
@@ -36,7 +34,7 @@ export const App = () => {
       <p>犬の画像です</p>
       <img src={dogUrl} />
 
-      <button onClick ={() => setDogUrl(updataImage())} />
+      <button onClick={updateImage}>更新</button>
     </div>
   )
 }
