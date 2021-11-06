@@ -30,7 +30,7 @@ export const App = () => {
 
   return (
     <div>
-      <header>React_Station2</header>
+      <header className="header">React_Station2</header>
       <p>犬の画像です</p>
       <img src={dogUrl} />
 
