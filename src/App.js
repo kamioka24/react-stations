@@ -1,5 +1,3 @@
-// DO NOT DELETE
-
 import React, { useState } from "react";
 import './App.css'
 
@@ -36,7 +34,7 @@ export const App = () => {
       <p>犬の画像です</p>
       <img src={dogUrl} />
 
-      <button onClick ={() => setDogUrl(updateImage())} />
+      <button onClick={updateImage}>更新</button>
     </div>
   )
 }
