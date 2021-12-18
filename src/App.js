@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import './App.css'
+import './Header.js'
+import './Description.js'
 
 /**
  *
@@ -33,7 +35,6 @@ export const App = () => {
       <header className="header">React_Station2</header>
       <p>犬の画像です</p>
       <img src={dogUrl} />
-
       <button onClick={updateImage}>更新</button>
     </div>
   )
