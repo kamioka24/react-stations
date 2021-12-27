@@ -1,10 +1,9 @@
-import * as React from 'react'
-import { useState} from 'react';
+import * as React from 'react';
 
 function DogImage(props) {
   return(
     <div>
-      <img src={props.dogUrl} />
+      <img src={props.url} />
     </div>
   )
 }
