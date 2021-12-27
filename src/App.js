@@ -13,9 +13,6 @@ export const App = () => {
     <div>
       <Header className="header">React_Station8</Header>
       <Description desc="犬の画像を表示させるサイトです。" />
-      <p>犬の画像です</p>
-      <img src={dogUrl} />
-      <button onClick={updateImage}>更新</button>
     </div>
   )
 }
