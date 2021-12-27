@@ -3,7 +3,7 @@ import { useState} from 'react';
 
 function DogImage(props) {
   return(
-    <div CalssName="item">
+    <div>
       <img src={props.dogUrl} />
     </div>
   )

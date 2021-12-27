@@ -10,13 +10,9 @@ function Description(props) {
   }
   return(
     <div>
-      <span className="item">
-        {props.desc}
-      </span>
+      {props.desc}
       <DogImage dogUrl={dogUrl} />
-      <button onClick={updateImg} className="btn">
-        更新する
-      </button>
+      <button onClick={updateImg} className="btn" 更新する />
     </div>
   )
 }
