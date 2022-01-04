@@ -4,7 +4,7 @@ import DogImage from './DogImage.js';
 function Description(props) {
   const [url, setDogUrl] = React.useState("https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1936.jpg");
   const updateImage = () => {
-    fetch("https://dog.ceo/api//breeds/image/random")
+    fetch("https://dog.ceo/api/breeds/image/random")
     .then(response => response.json())
     .then(data => setDogUrl(data.message));
   }
