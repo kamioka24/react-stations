@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react"
 
 export function DogListContainer() {
-  const [breeds, setBreeds] = useState("xxx");
+  const [breeds, setBreeds] = useState([]);
+  const [selectedBreed, setSelectedBreed] = useState("");
+
+  const handleChange = (e) => selectedBreed(e.target.value)
+
   useEffect(() => {
     fetch("https://dog.ceo/api/breeds/list/all")
       .then(res => res.json())
@@ -13,6 +17,9 @@ export function DogListContainer() {
   }, []);
 
   return(
-    <div />
+    <BreedsSelect
+    values={breeds}
+    values={selectedBreed}
+    change={handleChange} />
   )
 }
