@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react"
+import { BreedsSelect } from './BreedsSelect.js';
 
 export function DogListContainer() {
   const [breeds, setBreeds] = useState([]);
@@ -20,6 +21,6 @@ export function DogListContainer() {
     <BreedsSelect
     values={breeds}
     values={selectedBreed}
-    change={handleChange} />
+    changes={handleChange} />
   )
 }
