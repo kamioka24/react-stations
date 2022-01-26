@@ -1,17 +1,25 @@
-import React from "react";
+// DO NOT DELETE
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export const BreedsSelect = (props) => {
-  const breeds = props.breeds;
-
-  const listItems = breeds?.map((breed) =>
-    <option key={breed} value={breed} text={breed}>{breed}</option>
-  )
-  return(
+export const BreedsSelect = ({ breeds, selectedBreed, onChangedSelect }) => {
+  return (
     <>
-      <select name={breeds} value={props.breed} onChange={props.change}>
-        <option value="none">犬種を選択</option>
-        <option value="none">{listItems}</option>
+      <select value={selectedBreed} onChange={onChangedSelect}>
+        <option value="none">Select</option>
+        {breeds.map(b => (
+          <option key={b} value={b}>
+            {b}
+          </option>
+        ))}
       </select>
     </>
   )
+}
+
+// 型定義
+BreedsSelect.propTypes = {
+  breeds: PropTypes.array.isRequired,
+  selectedBreed: PropTypes.string.isRequired,
+  onChangedSelect: PropTypes.func.isRequired,
 }

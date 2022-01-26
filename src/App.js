@@ -1,20 +1,21 @@
-import React from "react"
+// DO NOT DELETE
+import * as React from 'react'
 import './App.css'
-import { Header } from './Header.js'
-import { Description } from './Description.js'
-import { BreedsSelect } from './BreedsSelect.js';
+
+import { Header } from './Header'
+import { Description } from './Description'
+import { DogListContainer } from './DogListContainer'
 
 /**
  *
  * @type {React.FC}
  */
-
 export const App = () => {
   return (
-    <div>
-      <Header title="React_Station8" />
-      <Description desc="犬の画像を表示させるサイトです。" />
-      <BreedsSelect />
+    <div className="app">
+      <Header />
+      <Description />
+      <DogListContainer />
     </div>
   )
 }

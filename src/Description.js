@@ -1,18 +1,35 @@
-import * as React from 'react'
-import { DogImage } from './DogImage.js';
+// DO NOT DELETE
+import React from 'react'
+import { DogImage } from './DogImage'
 
-export function Description(props) {
-  const [url, setDogUrl] = React.useState("https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1936.jpg");
-  const updateImage = () => {
-    fetch("https://dog.ceo/api/breeds/image/random")
-    .then(response => response.json())
-    .then(data => setDogUrl(data.message));
+export const Description = () => {
+  const [dogUrl, setDogUrl] = React.useState(
+    'https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1936.jpg',
+  )
+  const [isLoading, setIsLoading] = React.useState(false)
+
+  const changeDogUrlAtRandom = () => {
+    setIsLoading(true)
+
+    fetch('https://dog.ceo/api/breeds/image/random')
+      .then(res => res.json())
+      .then(r => setDogUrl(r.message))
+      .catch(() => alert('画像URLの取得に失敗しました。'))
+      .finally(() => setIsLoading(false))
   }
-  return(
-    <div>
-      <hi>{props.desc}</hi>
-      <DogImage url={url} />
-      <button onClick={updateImage}>更新</button>
+
+  return (
+    <div className="description">
+      <p className="description__text">犬の画像を表示するサイトです。</p>
+      <DogImage url={dogUrl} />
+      <button
+        className="description__button"
+        type="description__button"
+        onClick={changeDogUrlAtRandom}
+        disabled={isLoading}
+      >
+        更新
+      </button>
     </div>
   )
 }

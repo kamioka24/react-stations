@@ -1,26 +1,63 @@
-import React, { useEffect, useState } from "react"
-import { BreedsSelect } from './BreedsSelect.js';
+// DO NOT DELETE
+import React from 'react'
+
+import { BreedsSelect } from './BreedsSelect'
 
 export const DogListContainer = () => {
-  const [breeds, setBreeds] = useState([]);
-  const [selectedBreed, setSelectedBreed] = useState("");
+  const [breeds, setBreeds] = React.useState([])
+  const [selectedBreed, setSelectedBreed] = React.useState('none')
+  const [dogImageUrls, setDogImageUrls] = React.useState([])
 
-  //const handleChange = (e) => selectedBreed(e.target.value)
-
-  useEffect(() => {
-    fetch("https://dog.ceo/api/breeds/list/all")
+  React.useEffect(() => {
+    fetch('https://dog.ceo/api/breeds/list/all')
       .then(res => res.json())
-      .then((result) => {
-        if(result.status === "success") {
-          setBreeds(result.message);
-          setSelectedBreed(result.message);
-        }
-      });
-  }, []);
+      .then(result => setBreeds(Object.keys(result.message)))
+      .catch(() => alert('通信エラーが発生しました')) // try catch のようなもの？
+  }, [])
 
-  return(
-    <BreedsSelect
-    values={breeds}
-    none={selectedBreed} />
+  const onChangedSelect = e => {
+    setSelectedBreed(e.target.value)
+  }
+
+  const showDogImages = () => {
+    if (selectedBreed === 'none') {
+      alert('犬種が選択されていません。')
+    } else {
+      fetch(`https://dog.ceo/api/breed/${selectedBreed}/images/random/12`)
+        .then(res => res.json())
+        .then(result => setDogImageUrls(result.message))
+        .catch(() => alert('通信エラーが発生しました')) // try catch のようなもの？
+    }
+  }
+
+  return (
+    <>
+      <div className="dog-list-selector">
+        <p className="dog-list-selector__text">Breeds List</p>
+        <BreedsSelect
+          breeds={breeds}
+          selectedBreed={selectedBreed}
+          onChangedSelect={onChangedSelect}
+        />
+        <button
+          className="dog-list-selector__button"
+          type="button"
+          onClick={showDogImages}
+        >
+          表示
+        </button>
+      </div>
+      <div className="dog-list-content">
+        {dogImageUrls &&
+          dogImageUrls.map((url, i) => (
+            <img
+              className="dog-list-content__item"
+              key={i}
+              src={url}
+              alt={`${selectedBreed}の写真`}
+            />
+          ))}
+      </div>
+    </>
   )
 }

@@ -1,9 +1,16 @@
-import * as React from 'react';
+// DO NOT DELETE
+import React from 'react'
+import PropTypes from 'prop-types'
 
-export function DogImage(props) {
-  return(
-    <div>
-      <img src={props.url} />
-    </div>
+export const DogImage = ({ url }) => {
+  return (
+    <figure className="dog-image">
+      <img className="dog-image__image" src={url} alt="犬の画像" />
+    </figure>
   )
+}
+
+// 型定義
+DogImage.propTypes = {
+  url: PropTypes.string.isRequired,
 }
