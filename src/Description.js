@@ -2,7 +2,7 @@ import * as React from 'react'
 import { DogImage } from './DogImage.js';
 
 export function Description(props) {
-  const [url, setDogUrl] = React.useState("https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1936.jpg");
+  const [dogUrl, setDogUrl] = React.useState("https://images.dog.ceo/breeds/spaniel-blenheim/n02086646_1936.jpg");
   const updateImage = () => {
     fetch("https://dog.ceo/api/breeds/image/random")
     .then(response => response.json())
@@ -11,7 +11,7 @@ export function Description(props) {
   return(
     <div>
       <hi>{props.desc}</hi>
-      <DogImage url={url} />
+      <DogImage url={dogUrl} />
       <button onClick={updateImage}>更新</button>
     </div>
   )
